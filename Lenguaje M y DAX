@@ -6,7 +6,7 @@
 # Edad = (Duration.Days(Duration.From(Date.From(DateTime.LocalNow())-VARIABLECUMPLE)))/360
 
 
-### Calcular el tiempo entre dos fechas
+#### Calcular el tiempo entre dos fechas
 
 Tiempo en años = (Duration.Days(Duration.From(VarFechaInicio - VarFechaFin)))
 # Aveces es necesario que la fecha fin sea el día de hoy, en ese caso el día de hoy se calcula con Date.From(DateTime.LocalNow). Entonces VarFechaFin = Date.From(DateTime.LocalNow)
@@ -18,3 +18,42 @@ Tiempo en años = (Duration.Days(Duration.From(VarFechaInicio - VarFechaFin)))
 (Duration.Days(Duration.From(Date.From(DateTime.LocalNow())-[Fecha.Contratacion])))/365
 ELSE
 (Duration.Days(Duration.From([Fecha.Contratacion]-[Fecha.Despido])))/365
+
+
+
+
+### Crear una tabla con la fecha actualizada
+
+Se crea una consulta en blanco y se pone este codigo:
+
+=DateTime.LocalNow() Y o convertimos en tabla
+
+Esto nos da la fecha de actualización que tiene el reporte.
+
+
+
+
+#### Crear tabla calendario para manejar fechas (DAX)
+
+Modelado -> Nueva tabla -> tirar codigo
+
+Calendario = CALENDAR(MIN('nombretabla'[VARfecha]);TODAY())
+
+Recoge la fecha mas antigua en la tabla que le indico hasta la fecha de hoy
+
+Para dejar solo el mes o solo el año o solo el día
+
+Año = Year(Calendario[Date]) ## Suponiendo que la tabla se llama Calendario y la columna Date
+Mes = MONTH(Calendario[Date])
+Día = DAY(Calendario[Date])
+
+AÑOMESDIA =  FORMAT(
+        Calendario[Date], 
+        "YYYYMMDD"
+    )
+
+
+
+
+
+
