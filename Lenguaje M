@@ -1,0 +1,20 @@
+
+### Calcular la edad de una persona usando la fecha de nacimiento
+
+#Crear columna personalizada
+
+# Edad = (Duration.Days(Duration.From(Date.From(DateTime.LocalNow())-VARIABLECUMPLE)))/360
+
+
+### Calcular el tiempo entre dos fechas
+
+Tiempo en años = (Duration.Days(Duration.From(VarFechaInicio - VarFechaFin)))
+# Aveces es necesario que la fecha fin sea el día de hoy, en ese caso el día de hoy se calcula con Date.From(DateTime.LocalNow). Entonces VarFechaFin = Date.From(DateTime.LocalNow)
+
+## Por ejemplo, calcular la antiguedad de un trabajador en la empresa en una base de datos que tiene empleados activos y empleados que ya no trabajan en la empresa
+## Se necesita una columna que indique si el trabajador es Activo o NO (Var = ACTIVO)
+
+= IF [ACTIVO] = "si" THEN
+(Duration.Days(Duration.From(Date.From(DateTime.LocalNow())-[Fecha.Contratacion])))/365
+ELSE
+Duration.Days(Duration.From([Fecha.Contratacion]-[Fecha.Despido]))
