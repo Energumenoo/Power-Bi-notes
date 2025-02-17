@@ -17,4 +17,4 @@ Tiempo en años = (Duration.Days(Duration.From(VarFechaInicio - VarFechaFin)))
 = IF [ACTIVO] = "si" THEN
 (Duration.Days(Duration.From(Date.From(DateTime.LocalNow())-[Fecha.Contratacion])))/365
 ELSE
-Duration.Days(Duration.From([Fecha.Contratacion]-[Fecha.Despido]))
+(Duration.Days(Duration.From([Fecha.Contratacion]-[Fecha.Despido])))/365
